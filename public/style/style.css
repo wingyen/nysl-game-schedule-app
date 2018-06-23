@@ -394,11 +394,10 @@ background: #6d7fcc;
 
 .chat-body {
     display: flex;
-    height: calc(100vh - 115px);
-    max-height: calc(100vh - 115px);
+    height: calc(100vh - 113px);
+    max-height: calc(100vh - 113px);
     overflow-y: auto;
-    background:url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png") center;
-    margin-bottom: 10px;
+    background:url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
 }
 
 .input{

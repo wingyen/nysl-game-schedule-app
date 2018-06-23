@@ -1,0 +1,560 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+html, body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background: rgb(213, 222, 236);
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* swiper */
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+
+    max-height: 100%;
+}
+
+.swiper-slide {
+    /* text-align: center; */
+    font-size: 16px;
+    background: #fff;
+     /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex; 
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.swiper-pagination {
+    display: block;
+    position: fixed;
+    top: 10px;
+   
+    width: 100% !important;
+    left: auto !important;
+    margin: 0;
+    padding-top: 40px;
+}
+
+
+
+.swiper-pagination-bullet {
+    padding: 5px 10px;
+    border-radius: 0;
+    width: 90px;
+    height: 30px;
+    text-align: center;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fafafa;
+    opacity: 1;
+    background:transparent;
+}
+
+.swiper-pagination-bullet-active {
+    /* color: #fff; */
+    /* background: #007aff; */
+    border-bottom:3px solid #007bfff1;
+}
+
+
+
+header.navbar {
+    /* position: fixed; */
+    z-index: 5;
+    width: 100%;
+    padding-bottom: 25px;
+}
+
+
+
+.row {
+    display: flex;
+    border: 2px solid;
+}
+
+.time, .teams, .location {
+    display: inline-block;
+    vertical-align: -webkit-baseline-middle;
+
+}
+
+
+.time {
+    float: left;
+    text-align: left;
+}
+
+
+
+
+.schedule-row {
+    width: 100%;
+    margin: 2px;
+    border: 1px solid rgb(202, 199, 199);
+    border-radius: 2px;
+}
+
+
+
+#logo {
+   margin:0 auto;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   z-index: 5;
+
+}
+
+div#accordion {
+    position: relative;
+    clear: inherit;
+}
+
+.container-fluid {
+    display: block;
+    position: relative !important;
+    padding-top: 86px;
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    background-color: transparent;
+    margin-bottom: 12%;
+    max-height: 80%;
+    justify-content: center;
+    max-height: calc(100vh - 58px); /*only scroll every single slider*/
+    overflow-y: auto !important;
+    
+}
+
+.card-header{
+    position: relative;
+    text-align: center;
+    padding: 0;
+    text-decoration: none;
+    height: 45px;
+}
+
+div.card-header::after{
+    content: '\002B';
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    float: right;
+}
+
+div.card-header.active::after {
+    content: "\2212";
+}
+.pagination-container {
+    background-color: rgb(148, 188, 247);
+}
+
+.navbar-color {
+    background-color: rgb(148, 188, 247) !important;
+}
+
+/* .time {
+    float: left;
+}
+
+.location {
+    float: right;
+} */
+
+.flex-container {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: rgb(247, 238, 228);
+    margin-top: 10px;
+}
+.box {
+    width: 100%;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(134, 185, 157);
+    margin: 2%;
+}
+
+footer {
+    display: block;
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    z-index: 5;
+}
+
+
+
+div.card-body {
+    font-size: 0.5rem !important;
+    height: 90px
+}
+
+.collapsible {
+    cursor: pointer;
+}
+
+.active, .collapsible:hover {
+    background-color: #555;
+}
+
+.content {
+    display: none;
+    overflow: hidden;
+}
+
+/* sidebar */
+/* .wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    z-index: 10;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+a[aria-expanded="false"]::before,
+a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 0.6em;
+}
+
+a[aria-expanded="true"]::before {
+    content: '\e260';
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+#sidebar {
+
+background: #7386D5;
+color: #fff;
+transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+padding: 20px;
+background: #6d7fcc;
+} */
+
+.navbar-brand
+{
+    position: absolute;
+    width: 50%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+    z-index:0;
+}
+
+.navbar-toggle {
+     z-index: 10!important;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+    position: fixed;
+    bottom: 0;
+    background-color: #fefefe;
+    width: 100%;
+    height: 100%;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+    color: white !important;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000 !important;
+    text-decoration: none;
+    cursor: pointer !important;
+}
+
+.modal-header {
+    padding: .5rem !important;
+    background-color: #00bcd4;
+    color: white;
+}
+
+.modal-body {
+    position: relative;
+    padding: 2px 16px;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    color: white;
+    height: 100px;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+    from {right: -300px; opacity: 0} 
+    to {right: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+    from {right: -300px; opacity: 0}
+    to {right: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+
+.modal-body {
+    max-height: calc(100vh - 98px);
+    overflow-y: auto !important;
+}
+
+.blockquote {
+    padding: 5px 10px !important;
+    font-size: 1rem !important;
+}
+
+.chat-body {
+    display: flex;
+    height: calc(100vh - 115px);
+    max-height: calc(100vh - 115px);
+    overflow-y: auto;
+    background:url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png") center;
+    margin-bottom: 10px;
+}
+
+.input{
+    width: 40vh;
+    height: auto;
+    border-radius: 5px;
+    vertical-align: -webkit-baseline-middle;
+    line-break: auto;
+}
+
+/* message style */
+.message-container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0;
+    width: 55vh;
+    justify-content: center;
+    margin-left: 3px;
+}
+
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+    float: right;
+}
+
+.message-container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.message-container img {
+    float: left;
+    max-width: 40px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.message-container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+.time-left {
+    float: left;
+    color: #999;
+}
+
+
+#advice{
+    height: 200px;
+    width: 200px;
+    overflow: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    color: white;
+    opacity: .7;
+    border-radius: 10px;
+}
+
+#posts {
+    overflow: scroll;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    font-size: 1rem;
+}
+
+.btn-sm {
+    padding: 0.40625rem 0.25rem !important;
+    margin-left: 5px !important;
+    position: relative;
+}
+
+#create-post {
+    margin-left: 0;
+}
+
+#chatfooter {
+    vertical-align: -webkit-baseline-middle;
+    height: 60px;
+    justify-content: center;
+}
+
+.textarea-container {
+    position: relative;
+    /* you should change this*/
+    width: 35vh;
+  }
+  
+  #textInput, .textarea-size {
+    min-height: 25px !important;
+    /* need to manually set font and font size */
+    font-family: sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding: 4px;
+    border-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  #textInput {
+    height: 100% !important;
+    position: absolute;
+    resize:none;
+  
+    /*
+    "pre" or "preline" or "normal" fixes Chrome issue where
+      whitespace at end of lines does not trigger a line break.
+    However, it causes the text to exhibit the behavior seen with
+      "pre" that is described below.
+     */
+    white-space: normal;
+  }
+  
+  .textarea-size {
+    visibility: hidden;
+  
+    /*
+    Pre-wrap: preserve spacing and newlines, but wrap text.
+    Pre: preserve spacing and newlines but don't wrap text.
+  
+    "pre" does not wrap well on Firefox, even with word-wrap:break-word.
+    "pre" on Chrome works with word-wrap, but exhibits different behavior:
+    Instead of entire words being moved to the next line for wrapping,
+    the browser will cut words in the middle for wrapping.
+    "pre-line" has Firefox issues
+    */
+    white-space: pre-wrap;
+    /* Required for wrapping lines in Webkit,
+      but not necessary in Firefox if you have white-space wrapping
+      (pre-wrap, normal, pre-line) already set */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .textarea-container, #create-post, #upload , .file-inline, .camera-inline{
+      display: inline-block;
+      vertical-align: -webkit-baseline-middle;
+  }
+

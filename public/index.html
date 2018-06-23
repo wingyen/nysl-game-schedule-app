@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="NYSL Web Application">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>NYSL</title>
+    <link rel="apple-touch-icon" href="style/icons8-soccer-ball-48.png">
+    <link rel="icon" sizes="192x192" href="style/icons8-soccer-ball-48.png">
+    <!-- iPhone  startup image -->
+    <link rel="apple-touch-startup-image" href="style/blue_startup.png">
+    <link href="style/blue_startup.png" media="(device-width: 415px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 1)"
+        rel="apple-touch-startup-image">
+    <!-- iPhone 6 startup image -->
+    <link href="style/blue_startup.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://idangero.us/swiper/dist/css/swiper.min.css">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <!-- my css -->
+    <link rel="stylesheet" href="style/style.css">
+    <!-- creative-tim -->
+    <link rel="stylesheet" href="https://demos.creative-tim.com/material-kit/assets/css/material-kit.min.css?v=2.0.3">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Firebase -->
+    <script defer src="/__/firebase/5.0.4/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.0.4/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.0.4/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.0.4/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.0.4/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="main">
+            <header class="navbar navbar-color navbar-dark bg-info fixed-top">
+                <span style="font-style: italic; margin-left: 3px;">NYSL</span>
+                <img id="logo" src="style/nysl_logo.png" alt="logo" style="width: 45px;height: 45px; ">
+
+                <img src="style/user_icon.png" alt="profile photo" id="profile-photo" style="width: 40px; height: 40px; border-radius: 50%;margin-right: 5px;">
+
+                <!-- <div id="id01" class="login-modal">
+  
+                                <form class="login-modal-content animate" action="">
+                                  <div class="imgcontainer">
+                                    <span onclick="toggleLoginModal()" class="close" title="Close Modal">&times;</span>
+                                    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+                                  </div>
+                              
+                                  <div class="login-container">
+                                    <label for="uname"><b>Username</b></label>
+                                    <input type="text" placeholder="Enter Username" name="uname" required>
+                              
+                                    <label for="psw"><b>Password</b></label>
+                                    <input type="password" placeholder="Enter Password" name="psw" required>
+                                      
+                                    <button type="submit">Login</button>
+                                    <label>
+                                      <input type="checkbox" checked="checked" name="remember"> Remember me
+                                    </label>
+                                  </div>
+                              
+                                  <div class="container" style="background-color:#f1f1f1">
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                    <span class="psw">Forgot <a href="#">password?</a></span>
+                                  </div>
+                                </form>
+                              </div> -->
+
+            </header>
+            <!-- Add Pagination -->
+            <div class="pagination-container">
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="container-fluid">
+
+                            <div class="card text-center card-nav-tabs" v-for="x in schedule">
+                                <div class="card-header card-header-success collapsible">
+                                    {{x.date}}
+                                </div>
+                                <div class="card-body content">
+                                    <div class="blockquote">
+                                        <div class="time">
+                                            {{x.timeStart}}
+                                            <br>{{x.timeEnd}}
+                                        </div>
+                                        <div class="team" style="font-weight: 700">
+                                            {{x.team1}}
+                                            <span style="padding:0 10px;"> vs</span> {{x.team2}}
+                                        </div>
+                                        <div class="location">
+                                            <a class="field" :href="x.addressLink">{{x.location}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- team page -->
+                    <div class="swiper-slide">
+                        <div class="container-fluid">
+                            <div class="flex-container">
+                                <div class="box" v-for="x in teams">
+                                    <div style="display: none">{{x.team}}</div>
+                                    <img :src="x.team_logo" alt="team logo" class="team_logo myModalTrigger" @click="showSingleTeam(x)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Events page -->
+                    <div class="swiper-slide">
+                        <div class="container-fluid">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">August 4</h4>
+                                    <p class="card-text">NYSL Fundraiser.</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                    </p>
+                                </div>
+                                <img class="card-img-bottom" src="https://free3d.com/imgd/l77003-soccer-ball-80310.png" alt="Card image cap">
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">August 16</h4>
+                                    <p class="card-text">Season Kick-off: Meet the Teams</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                    </p>
+                                </div>
+                                <img class="card-img-bottom" src="https://www.fundraisingzone.com/wp-content/uploads/2017/01/soccerfundraising.jpg" alt="Card image cap">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal bg-info">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Team {{selectedTeamName}}</h3>
+                    <span class="close" @click="showAllTeams()">&times;</span>
+                </div>
+
+                <div class="modal-body">
+                    <div class="card text-center card-nav-tabs" v-for="x in teamSchedule">
+                        <div class="card-header card-header-success">
+                            {{x.date}}
+                        </div>
+                        <div class="card-body content" style="display: block">
+                            <div class="blockquote">
+                                <div class="time">
+                                    {{x.timeStart}}
+                                    <br>{{x.timeEnd}}
+                                </div>
+                                <div class="team" style="font-weight: 700">
+                                    {{x.team1}}
+                                    <span style="padding:0 10px;">vs</span> {{x.team2}}
+                                </div>
+                                <div class="location">
+                                    <a class="field" :href="x.addressLink">{{x.location}}</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Chat modal -->
+        <div id="chatModal" class="modal bg-info">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fa fa-angle-left" onclick="toggleChat()" style="color: azure;font-size:24px"></i>
+                    <h5 style="font-family: 'Pacifico', cursive; margin: auto">Hello,
+                        <span id="guestName"></span>
+                        <span style="margin-left: 5px">Let's chat!</span>
+                    </h5>
+                    <button id="logout" type="button" class="btn btn-danger btn-sm" onclick="logmeout()">Logout</button>
+                    <!-- <span class="close" onclick="toggleChat()">&times;</span> -->
+                </div>
+                <div id="firebaseui-container"></div>
+                <div class="chat-body">
+
+                    <div id="posts">
+
+                        Loading posts...
+                    </div>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div id="chatfooter" class="modal-footer bg-info fixed-bottom">
+                    <div id="upload" style="margin-left: 5px;">
+                        <div class="row" style="border: none; margin-right: 5px;">
+                            <label for="file" class="">
+                                <img src="style/upload_icon.png" alt="" style="width: 20px; height: 20px;">
+                            </label>
+                            <label for="camera" style="margin-left: 5px;">
+                                <img src="style/camera-512.png" alt="" style="width: 25px; height: 25px;" />
+                            </label>
+                        </div>
+                        <input id="camera" type="file" accept="image/*" capture="camera" style="display: none;" />
+                        <input id="file" type="file" accept="image/png, image/jpeg" style="display: none;" />
+                    </div>
+                    <div class="textarea-container">
+                        <textarea id="textInput" placeholder="Enter your message..."></textarea>
+                        <div class="textarea-size"></div>
+
+                        <!-- <button id="create-post" type="button" class="btn btn-success" onclick="writeNewPost()">Send</button> -->
+
+                    </div>
+                    <i id="create-post" class="fa fa-send-o" style="font-size:20px;color: azure" onclick="writeNewPost()"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <footer class="fixed-bottom bg-info">
+            <div class="footer-icons col">
+                <a href="tel:01234567890">
+                    <img src="style/call.png" alt="call icon" style="width: 30px; height: 30px;">
+                </a>
+            </div>
+            <div class="footer-icons col">
+                <a href="#chatModal" onclick="toggleChat()">
+                    <img src="style/wechat.png" alt="chat icon" style="width: 33px; height: 33px;">
+                </a>
+            </div>
+            <div class="footer-icons col">
+                <a href="mailto:hello@example.com">
+                    <img src="style/mail_icon.png" alt="mailto icon" style="width: 30px; height: 30px;">
+                </a>
+            </div>
+
+        </footer>
+
+    </div>
+
+    <!-- firebase -->
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.0.0/firebaseui.css" />
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD4cVN5IhoEjoXzU0I5rMdfieYZdTfK7_Y",
+            authDomain: "nysl-c3d81.firebaseapp.com",
+            databaseURL: "https://nysl-c3d81.firebaseio.com",
+            projectId: "nysl-c3d81",
+            storageBucket: "nysl-c3d81.appspot.com",
+            messagingSenderId: "583314587471"
+        };
+        firebase.initializeApp(config);
+
+   
+
+        // FirebaseUI config.
+        var uiConfig = {
+            signInSuccessUrl: 'https://nysl-c3d81.firebaseapp.com/#chatModal',
+            signInOptions: [
+                // Leave the lines as is for the providers you want to offer your users.
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+                //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+            ],
+            // Terms of service url.
+            tosUrl: 'https://nysl-c3d81.firebaseapp.com/#tos'
+        };
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        // The start method will wait until the DOM is loaded.
+        //if (ui.isPendingRedirect()) {
+        ui.start('#firebaseui-container', uiConfig);
+        //}
+
+        //Facebook signin
+        // window.fbAsyncInit = function () {
+        //     FB.init({
+        //         appId: '255470881891796',
+        //         xfbml: true,
+        //         version: 'v3.0'
+        //     });
+        //     FB.AppEvents.logPageView();
+        // };
+
+        // (function (d, s, id) {
+        //     var js, fjs = d.getElementsByTagName(s)[0];
+        //     if (d.getElementById(id)) { return; }
+        //     js = d.createElement(s); js.id = id;
+        //     js.src = "https://connect.facebook.net/en_US/sdk.js";
+        //     fjs.parentNode.insertBefore(js, fjs);
+        // }(document, 'script', 'facebook-jssdk'));
+
+
+        // FB.getLoginStatus(function (response) {
+        //     statusChangeCallback(response);
+        // });
+
+
+    </script>
+
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <script src="scripts/data.js"></script>
+
+    <script src="scripts/main.js"></script>
+
+    <script src="scripts/chat.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://idangero.us/swiper/dist/js/swiper.min.js"></script>
+
+    <script>
+
+        // Homepage Swiper
+        var menu = ['Schedule', 'Teams', 'Events']
+        var mySwiper = new Swiper('.swiper-container', {
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<span class="' + className + '">' + (menu[index]) + '</span>';
+                },
+            }
+        })
+
+    </script>
+
+    <!-- bootstrap -->
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Material Kit  Core JS Files   -->
+    <script src="https://demos.creative-tim.com/material-kit/assets/js/core/jquery.min.js"></script>
+    <script src="https://demos.creative-tim.com/material-kit/assets/js/core/popper.min.js"></script>
+
+    <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+    <!-- <script src="https://demos.creative-tim.com/material-kit/assets/js/material-kit.min.js?v=2.0.3"></script> -->
+
+</body>
+
+</html>

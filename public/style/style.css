@@ -187,16 +187,23 @@ div.card-header.active::after {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    background-color: rgb(247, 238, 228);
-    margin-top: 10px;
+    background-color:transparent;
+    margin-top: 5px;
 }
+
+div.teams-background {
+    height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1510526292299-20af3f62d453?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b5be2bce4815c8009e8ffafa3a92cea9&auto=format&fit=crop&w=2028&q=80");
+}
+
 .box {
-    width: 100%;
-    height: 110px;
+    width: 40%;
+    height: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(134, 185, 157);
+    background-color: rgb(192, 247, 247);
+    opacity: .7;
     margin: 2%;
 }
 
@@ -401,7 +408,8 @@ background: #6d7fcc;
 }
 
 .input{
-    width: 40vh;
+    width: 30vh;
+    max-width: 30vh;
     height: auto;
     border-radius: 5px;
     vertical-align: -webkit-baseline-middle;

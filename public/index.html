@@ -120,7 +120,7 @@
 
                     <!-- team page -->
                     <div class="swiper-slide">
-                        <div class="container-fluid">
+                        <div class="container-fluid teams-background">
                             <div class="flex-container">
                                 <div class="box" v-for="x in teams">
                                     <div style="display: none">{{x.team}}</div>
@@ -168,7 +168,7 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3>Team {{selectedTeamName}}</h3>
+                    <h4>Team {{selectedTeamName}}</h4>
                     <span class="close" @click="showAllTeams()">&times;</span>
                 </div>
 

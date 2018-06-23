@@ -8,7 +8,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="NYSL Web Application">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <title>NYSL</title>
     <link rel="apple-touch-icon" href="style/icons8-soccer-ball-48.png">
@@ -20,6 +20,8 @@
     <!-- iPhone 6 startup image -->
     <link href="style/blue_startup.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
         rel="apple-touch-startup-image">
+    <!-- iPhone 5 startup image -->
+    <link href="style/blue_startup.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://idangero.us/swiper/dist/css/swiper.min.css">
 
@@ -294,7 +296,7 @@
         };
         firebase.initializeApp(config);
 
-   
+
 
         // FirebaseUI config.
         var uiConfig = {

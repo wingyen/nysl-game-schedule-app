@@ -203,8 +203,9 @@ div.teams-background {
     justify-content: center;
     align-items: center;
     background-color: rgb(192, 247, 247);
-    opacity: .7;
+    opacity: .6;
     margin: 2%;
+    z-index: 1;
 }
 
 footer {

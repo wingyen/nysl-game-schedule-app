@@ -130,21 +130,27 @@ function applyChat() {
     // let time = moment(new Date()).format("hh:mm:ss a")
 
     for (let key in messages) {
-        if (messages[key].name == user.displayName) {
+        let message = messages[key]
+        var body = `<p class="message">${message.body}</p>`
+        if(message.imageUrl != null) {
+            body = `<img src="${message.imageUrl}" class="resize" />`
+        }
+
+        if (message.name == user.displayName) {
             template += `<div class="message-container">
-            <img src="${messages[key].photo}" alt="Guest" style="width:100%;">
-            <p class="name">${messages[key].name}:</p>
-            <p class="message">${messages[key].body}</p>
-            <span class="chatTime time-right">${messages[key].time}</span>
+            <img src="${message.photo}" alt="Guest" style="width:100%;">
+            <p class="name">${message.name}:</p>
+            ${body}
+            <span class="chatTime time-right">${message.time}</span>
             </div>
             `;
         } else {
             template += `
             <div class="message-container darker">
-            <img src="${messages[key].photo}" alt="Guest" class="right" style="width:100%;">
-            <p class="name">${messages[key].name}:</p>
-            <p class="message">${messages[key].body}</p>
-                <span class="chatTime time-left">${messages[key].time}</span>
+            <img src="${message.photo}" alt="Guest" class="right" style="width:100%;">
+            <p class="name">${message.name}:</p>
+            ${body}
+                <span class="chatTime time-left">${message.time}</span>
             </div>
             `
         }
@@ -153,6 +159,62 @@ function applyChat() {
     //
     $("#posts").animate({ scrollTop: $("#posts").prop("scrollHeight") }, 500)
 }
+
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+  
+document.getElementById('cameraButton').addEventListener("change",function(e){
+    var file= e.target.files[0];
+    let randomname = "uploadedimg/"+uuidv4()
+    //create storage ref to the firebase storage
+    var storageRef = firebase.storage().ref().child(randomname);
+    task = storageRef.put(file)
+    console.log("uploading", task)
+    task.on("state_changed",function(snapshot){
+       var percentage= (snapshot.bytesTransferred/snapshot.totalBytes) *100;
+       console.log("upload "+percentage)
+    }, function(error) {
+        // Handle unsuccessful uploads
+        console.log("oh file didnt upload", error)
+      }, function() {
+        // Handle successful uploads on complete
+        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+        task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+          console.log('File available at', downloadURL);
+          
+          let userName = currentUser.displayName;
+          let proPhoto = currentUser.photoURL;
+          let newTime = new Date();
+          let cTime = newTime.toLocaleString();
+          let post = {
+                name: userName,
+                imageUrl: downloadURL,
+                photo: proPhoto,
+                time: cTime
+            };
+        
+        
+            // Get a key for a new Post.
+            let newPostKey = firebase.database().ref().child('myChat').push().key;
+        
+            //Write data
+            let updates = {};
+            updates[newPostKey] = post;
+        
+            // clear messages when send is cliked
+            $("#textInput").val("")
+        
+            firebase.database().ref('myChat').update(updates);
+        });
+      });
+ });
+
+ 
 
 function textArea() {
     var textContainer, textareaSize, input;

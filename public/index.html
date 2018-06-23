@@ -228,18 +228,14 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div id="chatfooter" class="modal-footer bg-info">
+                <div id="chatfooter" class="modal-footer bg-info sticky-bottom">
                     <div id="upload" style="margin-left: 5px;">
                         <div class="row" style="border: none; margin-right: 5px;">
-                            <label for="file" class="">
-                                <img src="style/upload_icon.png" alt="" style="width: 20px; height: 20px;">
-                            </label>
-                            <label for="camera" style="margin-left: 5px;">
+                            <label for="cameraButton" style="margin-left: 5px;">
                                 <img src="style/camera-512.png" alt="" style="width: 25px; height: 25px;" />
                             </label>
                         </div>
-                        <input id="camera" type="file" accept="image/*" capture="camera" style="display: none;" />
-                        <input id="file" type="file" accept="image/png, image/jpeg" style="display: none;" />
+                        <input id="cameraButton" type="file" accept="image/*" capture="camera" style="display: none;" />
                     </div>
                     <div class="textarea-container">
                         <textarea id="textInput" placeholder="Enter your message..."></textarea>

@@ -566,3 +566,8 @@ background: #6d7fcc;
       vertical-align: -webkit-baseline-middle;
   }
 
+img.resize {
+    max-width: 50%;
+    max-height: 50%;
+    border-radius: 0 !important;
+}

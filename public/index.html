@@ -232,7 +232,7 @@
                     <div id="upload" style="margin-left: 5px;">
                         <div class="row" style="border: none; margin-right: 5px;">
                             <label for="cameraButton" style="margin-left: 5px;">
-                                <img src="style/camera-512.png" alt="" style="width: 25px; height: 25px;" />
+                                <img src="style/camera-512.png" alt="" style="width: 25px; height: 25px; color: azure" />
                             </label>
                         </div>
                         <input id="cameraButton" type="file" accept="image/png, image/jpeg" style="display: none;" />
@@ -277,7 +277,7 @@
 
     <!-- firebase -->
 
-    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.0.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.0.0/firebaseui.css" />
     <script>
@@ -291,8 +291,7 @@
             messagingSenderId: "583314587471"
         };
         firebase.initializeApp(config);
-
-
+    
 
         // FirebaseUI config.
         var uiConfig = {

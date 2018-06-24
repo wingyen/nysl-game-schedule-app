@@ -4,12 +4,6 @@ function toggleChat() {
 
 }
 
-// function toggleLoginModal(){
-//     $("#id01").toggle();
-//     console.log("login")
-// }
-//document.getElementById('login').addEventListener("click", login);
-//document.getElementById('create-post').addEventListener("click", writeNewPost)
 
 function signedOutState() {
     //console.log("signed out state")
@@ -157,7 +151,7 @@ function applyChat() {
     }
     posts.innerHTML = template;
     //
-    $("#posts").animate({ scrollTop: $("#posts").prop("scrollHeight") }, 500)
+    $("#posts").animate({ scrollTop: $("#posts").prop("scrollHeight") }, 600)
 }
 
 function uuidv4() {
@@ -217,8 +211,8 @@ document.getElementById('cameraButton').addEventListener("change",function(e){
  
 
 function textArea() {
-    var textContainer, textareaSize, input;
-    var autoSize = function () {
+    let textContainer, textareaSize, input;
+    let autoSize = function () {
         // also can use textContent or innerText
         textareaSize.innerHTML = input.value + '\n';
     };

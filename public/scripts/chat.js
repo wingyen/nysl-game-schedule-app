@@ -129,10 +129,11 @@ function applyChat() {
         if(message.imageUrl != null) {
             body = `<img src="${message.imageUrl}" class="resize" />`
         }
+    
 
         if (message.name == user.displayName) {
             template += `<div class="message-container">
-            <img src="${message.photo}" alt="Guest" style="width:100%;">
+            <img src="${message.photo}" alt="Guest" class="guestPhoto" style="width:100%;" onerror="this.src='style/user_icon.png';">
             <p class="name">${message.name}:</p>
             ${body}
             <span class="chatTime time-right">${message.time}</span>
@@ -141,15 +142,22 @@ function applyChat() {
         } else {
             template += `
             <div class="message-container darker">
-            <img src="${message.photo}" alt="Guest" class="right" style="width:100%;">
+            <img src="${message.photo}" alt="Guest" class="right guestPhoto" style="width:100%;" onerror="this.src='style/user_icon.png';">
             <p class="name">${message.name}:</p>
             ${body}
                 <span class="chatTime time-left">${message.time}</span>
             </div>
             `
         }
+       
     }
     posts.innerHTML = template;
+
+    // $(document).ready(function () {
+    //     $("img.guestPhoto").on("error", function(){
+    //     $(this).attr('src', 'https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png')
+    //     })
+    // })
     //
     $("#posts").animate({ scrollTop: $("#posts").prop("scrollHeight") }, 600)
 }

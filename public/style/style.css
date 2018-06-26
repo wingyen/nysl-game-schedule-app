@@ -363,7 +363,7 @@ background: #6d7fcc;
 .modal-body {
     position: relative;
     padding: 2px 16px;
-    background: aliceblue
+    background: aliceblue;
 }
 
 .modal-footer {
@@ -527,6 +527,7 @@ background: #6d7fcc;
     border-radius: 6px;
     overflow: hidden;
     width: 100%;
+    border: lightblue solid 1px;
   }
   
   #textInput {
@@ -546,22 +547,16 @@ background: #6d7fcc;
   .textarea-size {
     visibility: hidden;
   
-    /*
-    Pre-wrap: preserve spacing and newlines, but wrap text.
-    Pre: preserve spacing and newlines but don't wrap text.
+    white-space: normal;
   
-    "pre" does not wrap well on Firefox, even with word-wrap:break-word.
-    "pre" on Chrome works with word-wrap, but exhibits different behavior:
-    Instead of entire words being moved to the next line for wrapping,
-    the browser will cut words in the middle for wrapping.
-    "pre-line" has Firefox issues
-    */
-    white-space: pre-wrap;
-    /* Required for wrapping lines in Webkit,
-      but not necessary in Firefox if you have white-space wrapping
-      (pre-wrap, normal, pre-line) already set */
     word-wrap: break-word;
+
     overflow-wrap: break-word;
+    
+    max-height: 60px;
+    overflow-y: scroll;
+    margin-bottom: 5px;
+    vertical-align: -webkit-baseline-middle;
   }
 
   .textarea-container, #create-post, #upload , .file-inline, .camera-inline{

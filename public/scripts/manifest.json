@@ -1,0 +1,21 @@
+{
+    "short_name": "NYSL",
+    "name": "NYSL Game Schedule App",
+    "icons": [
+      {
+        "src": "https://cdn2.iconfinder.com/data/icons/down-to-earth/512/G12_Football.png",
+        "type": "png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "https://cdn2.iconfinder.com/data/icons/down-to-earth/512/G12_Football.png",
+        "type": "png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "",
+    "background_color": "#3367D6",
+    "display": "standalone",
+    "scope": "",
+    "theme_color": "#3367D6"
+  }

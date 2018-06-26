@@ -74,7 +74,7 @@ body {
 .swiper-pagination-bullet-active {
     /* color: #fff; */
     /* background: #007aff; */
-    border-bottom:3px solid #007bfff1;
+    border-bottom:3px solid #7aca50;
 }
 
 
@@ -144,6 +144,7 @@ div#accordion {
     justify-content: center;
     max-height: calc(100vh - 58px); /*only scroll every single slider*/
     overflow-y: auto !important;
+    background: aliceblue
     
 }
 
@@ -170,8 +171,9 @@ div.card-header.active::after {
     background-color: rgb(148, 188, 247);
 }
 
-.navbar-color {
-    background-color: rgb(148, 188, 247) !important;
+.navbar-color{
+    background: linear-gradient(60deg,#667dbb,#38538ed9) !important;
+    opacity: .9;
 }
 
 /* .time {
@@ -361,6 +363,7 @@ background: #6d7fcc;
 .modal-body {
     position: relative;
     padding: 2px 16px;
+    background: aliceblue
 }
 
 .modal-footer {
@@ -570,4 +573,12 @@ img.resize {
     max-width: 50%;
     max-height: 50%;
     border-radius: 0 !important;
+}
+
+.card .card-header-success {
+    background: linear-gradient(60deg,#66bb6a,#38538ed9) !important;
+}
+
+.modal-color {
+    background:linear-gradient(60deg,#667dbb,#38538ed9) ;
 }

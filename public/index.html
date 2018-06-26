@@ -13,13 +13,13 @@
     <title>NYSL</title>
     <link rel="apple-touch-icon" href="style/icons8-soccer-ball-48.png">
     <link rel="icon" sizes="192x192" href="style/icons8-soccer-ball-48.png">
+    <link rel="manifest" href="scripts/manifest.json">
     <!-- iPhone  startup image -->
-    <link rel="apple-touch-startup-image" href="style/blue_startup.png">
-    <link href="style/blue_startup.png" media="(device-width: 415px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 1)"
-        rel="apple-touch-startup-image">
+    <link rel="apple-touch-startup-image" href="style/apple-touch-startup-image-640x1096.jpeg">
+    <!-- iPhone 6/7 startup image -->
+    <!-- <link href="style/blue_startup.png" media="(device-width: 415px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image"> -->
     <!-- iPhone 6 startup image -->
-    <link href="style/blue_startup.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
-        rel="apple-touch-startup-image">
+    <!-- <link href="style/blue_startup.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"> -->
     <!-- iPhone 5 startup image -->
     <link href="style/apple-touch-startup-image-640x1096.jpeg" media="(device-width: 320px)
     and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
@@ -51,7 +51,7 @@
 <body>
     <div id="app">
         <div id="main">
-            <header class="navbar navbar-color navbar-dark bg-info fixed-top">
+            <header class="navbar navbar-color navbar-dark fixed-top">
                 <span style="font-style: italic; margin-left: 3px;">NYSL</span>
                 <img id="logo" src="style/nysl_logo.png" alt="logo" style="width: 45px;height: 45px; ">
 
@@ -166,11 +166,11 @@
         </div>
 
         <!-- The Modal -->
-        <div id="myModal" class="modal bg-info">
+        <div id="myModal" class="modal">
 
             <!-- Modal content -->
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header modal-color">
                     <h4>Team {{selectedTeamName}}</h4>
                     <span class="close" @click="showAllTeams()">&times;</span>
                 </div>
@@ -205,11 +205,11 @@
         </div>
 
         <!-- Chat modal -->
-        <div id="chatModal" class="modal bg-info">
+        <div id="chatModal" class="modal">
 
             <!-- Modal content -->
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header modal-color">
                     <i class="fa fa-angle-left" onclick="toggleChat()" style="color: azure;font-size:24px;font-weight: bold;"></i>
                     <h5 style="font-family: 'Pacifico', cursive; margin: auto">Hello,
                         <span id="guestName"></span>
@@ -229,7 +229,7 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div id="chatfooter" class="modal-footer bg-info">
+                <div id="chatfooter" class="modal-footer modal-color">
                     <div id="upload" style="margin-left: 5px;">
                         <div class="row" style="border: none; margin-right: 5px;">
                             <label for="cameraButton" style="margin-left: 5px;">
@@ -255,23 +255,24 @@
 
 
 
-        <footer class="fixed-bottom bg-info">
+        <footer class="fixed-bottom navbar-color">
             <div class="footer-icons col">
                 <a href="tel:01234567890">
-                    <img src="style/call.png" alt="call icon" style="width: 30px; height: 30px;">
+                    <img id="phoneCall" src="style/call.png" alt="call icon" style="width: 30px; height: 30px;">
                 </a>
             </div>
             <div class="footer-icons col">
+                
                 <a href="#chatModal" onclick="toggleChat()">
-                    <img src="style/wechat.png" alt="chat icon" style="width: 33px; height: 33px;">
+                    <img id="chatIcon" src="style/wechat.png" alt="chat icon" style="width: 33px; height: 33px;">
                 </a>
             </div>
             <div class="footer-icons col">
                 <a href="mailto:hello@example.com">
-                    <img src="style/mail_icon.png" alt="mailto icon" style="width: 30px; height: 30px;">
+                    <img id="emailIcon" src="style/mail_icon.png" alt="mailto icon" style="width: 30px; height: 30px;">
                 </a>
             </div>
-
+            
         </footer>
 
     </div>

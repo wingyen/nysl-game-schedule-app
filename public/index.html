@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>NYSL Web Application</title>
-    <meta name="viewport" content="initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="NYSL Web Application">
@@ -17,14 +17,16 @@
     <link rel="apple-touch-icon" sizes="76x76" href="style/soccer-ball-icon-512.png">
     <link rel="apple-touch-icon" sizes="120x120" href="style/soccer-ball-icon-512.png">
     <link rel="apple-touch-icon" sizes="152x152" href="style/soccer-ball-icon-512.png">
-  
- 
+
+
     <!-- iPhone  startup image -->
     <link rel="apple-touch-startup-image" href="style/apple-touch-startup-image-640x1096.jpeg">
     <!-- iPhone 6/7 startup image -->
-    <link href="style/blue_startup.png" media="(device-width: 415px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+    <link href="style/blue_startup.png" media="(device-width: 415px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 1)"
+        rel="apple-touch-startup-image">
     <!-- iPhone 6 startup image -->
-    <link href="style/blue_startup.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="style/blue_startup.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
     <!-- iPhone 5 startup image -->
     <link href="style/apple-touch-startup-image-640x1096.jpeg" media="(device-width: 320px)
     and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
@@ -41,7 +43,20 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <!-- service worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            // Register a service worker hosted at the root of the
+            // site using the default scope.
+            navigator.serviceWorker.register('/sw.js').then(function (registration) {
+                console.log('Service worker registration succeeded:', registration);
+            }).catch(function (error) {
+                console.log('Service worker registration failed:', error);
+            });
+        } else {
+            console.log('Service workers are not supported.');
+        }
+    </script>
     <!-- Firebase -->
     <script defer src="/__/firebase/5.0.4/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -101,12 +116,12 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="container-fluid">
-                                <!-- v-if="schedule.length==0" -->
-                            <div id="loader" v-if="schedule.length==0" style="height: 100vh; width: 100%;margin-top: 50px; text-align: center;vertical-align: auto; background-size: 100vh 100vh; z-index:1"  >
+                            <!-- v-if="schedule.length==0" -->
+                            <div id="loader" v-if="schedule.length==0" style="height: 100vh; width: 100%;margin-top: 50px; text-align: center;vertical-align: auto; background-size: 100vh 100vh; z-index:1">
                                 <img src="style/Pacman-loading-200px.gif" alt="loader" style="width: 150px; height: 150px;">
                             </div>
 
-                            <div class="card text-center card-nav-tabs" v-for="x in schedule" >
+                            <div class="card text-center card-nav-tabs" v-for="x in schedule">
                                 <div class="card-header card-header-success collapsible">
                                     {{x.date}}
                                 </div>

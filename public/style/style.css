@@ -161,16 +161,19 @@ div#accordion {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .card-header {height: 50px;}
+    .message-container {width: 768px}
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .card-header {height: 60px;}
+    .message-container {width: 992px}
 } 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     .card-header {height: 70px;}
+    .message-container{width: 1200px}
 }
 
 div.card-header::after{
@@ -207,7 +210,6 @@ div.card-header.active::after {
     flex-wrap: wrap;
     justify-content: space-around;
     background-color:transparent;
-    margin-top: 5px;
 }
 
 div.teams-background {
@@ -445,7 +447,7 @@ background: #6d7fcc;
     border-radius: 5px;
     padding: 5px;
     margin: 10px 0;
-    width: 55vh;
+    width: 99%;
     justify-content: center;
     margin-left: 3px;
 }
@@ -533,7 +535,7 @@ background: #6d7fcc;
 .textarea-container {
     position: relative;
     /* you should change this*/
-    width: 35vh;
+    width: 50%;
   }
   
   #textInput, .textarea-size {
@@ -544,7 +546,8 @@ background: #6d7fcc;
     box-sizing: border-box;
     padding: 4px;
     border-radius: 6px;
-    overflow: hidden;
+    resize: horizontal;
+    overflow: auto;
     width: 100%;
     border: lightblue solid 1px;
   }

@@ -159,7 +159,7 @@ function applyChat() {
     //     })
     // })
     //
-    $("#posts").animate({ scrollTop: $("#posts").prop("scrollHeight") }, 600)
+    $("#posts").animate({ scrollTop: $("#posts").prop("scrollHeight") }, 1000)
 }
 
 function uuidv4() {
@@ -223,6 +223,9 @@ function textArea() {
     let autoSize = function () {
         // also can use textContent or innerText
         textareaSize.innerHTML = input.value + '\n';
+        if(!$('#textInput').val()) {
+            return false
+        }
     };
 
     document.addEventListener('DOMContentLoaded', function () {

@@ -136,7 +136,7 @@
                                             <span style="padding:0 10px;"> vs</span> {{x.team2}}
                                         </div>
                                         <div class="location">
-                                            <a class="field" :href="x.addressLink">{{x.location}}</a>
+                                            <a class="field" :href="x.addressLink" >{{x.location}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +201,7 @@
 
                 <div class="modal-body">
                     <div class="card text-center card-nav-tabs" v-for="x in teamSchedule">
-                        <div class="card-header card-header-success">
+                        <div class="team-card-header card-header-success">
                             {{x.date}}
                         </div>
                         <div class="card-body content" style="display: block">
@@ -215,7 +215,7 @@
                                     <span style="padding:0 10px;">vs</span> {{x.team2}}
                                 </div>
                                 <div class="location">
-                                    <a class="field" :href="x.addressLink">{{x.location}}</a>
+                                    <a class="fieldT" :href="x.addressLink">{{x.location}}</a>
                                 </div>
                             </div>
                         </div>

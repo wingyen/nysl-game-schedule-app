@@ -44,9 +44,9 @@ var app = new Vue({
             let teamName = x.team
 
             let myTeamSchedule = this.schedule.slice().filter(
-                function (xx) {
-                    return (xx.team1 != undefined && xx.team1.includes(teamName))
-                        || (xx.team2 != undefined && xx.team2.includes(teamName))
+                function (val) {
+                    return (val.team1 != undefined && val.team1.includes(teamName))
+                        || (val.team2 != undefined && val.team2.includes(teamName))
                 }
             )
             this.teamSchedule = myTeamSchedule;
@@ -54,7 +54,17 @@ var app = new Vue({
 
             $('#myModal').toggle();
 
-        }
+
+        },
+        // gAlert: function(){
+        //     let check = confirm("Do you want to open Google Maps?");
+        //     if (check == true) {
+        //         return true;
+        //    }
+        //     else {
+        //         return false;
+        //    }
+        // }
 
     }
 
@@ -80,11 +90,11 @@ function cardCollapse() {
 cardCollapse();
 
 // Google Maps Alert
-function gAlert() {
-    let aElems = document.getElementsByClassName('field');
-
-    for (let i = 0; i < aElems.length; i++) {
-        aElems[i].onclick = function () {
+function gAlert(name) {
+    let el = document.getElementsByClassName(name);
+console.log(el)
+    for (let i = 0; i < el.length; i++) {
+        el[i].onclick = function () {
             let check = confirm("Do you want to open Google Maps?");
             if (check == true) {
                 return true;
@@ -94,63 +104,14 @@ function gAlert() {
             }
         };
     }
+     
+        
 
 }
-gAlert();
-
-function GetAlert() {
-    let check = confirm("Do you want to open Google Maps?");
-    if (check == true) {
-        return true;
-    }
-    else{
-        return false;
-    }
-}
-
-// function getInfo() {
-//     let divEl = document.getElementsByClassName('team_logo');
-//     for (let i = 0; i < divEl.length; i++) {
-//         divEl[i].onclick = function () {
-//             alert("The next game is on 08 Sep 2018.")
-//         }
-//     }
-// }
-
-// getInfo();
-
-//function myModel() {
-// Get the modal
-//var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-//var btn = document.getElementsByClassName("myModalTrigger")[0];
-
-// Get the <span> element that closes the modal
-//var spanClose = document.getElementsByClassName("close")[1];
-
-// When the user clicks the button, open the modal 
-//  btn.onclick = function () {
-//      modal.style.display = "block";
-//  }
+gAlert('field');
+gAlert('fieldT')
 
 
-
-// When the user clicks on <span> (x), close the modal
-// spanClose.onclick = function () {
-//     modal.style.display = "none";
-// }
-
-
-// When the user clicks anywhere outside of the modal, close it
-// window.onclick = function (event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
-//}
-
-// myModel();
 
 function myModelToggle() {
 

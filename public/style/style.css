@@ -5,6 +5,8 @@ html, body {
     height: 100%;
 }
 
+
+
 body {
     background: rgb(213, 222, 236);
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -156,6 +158,21 @@ div#accordion {
     height: 45px;
 }
 
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .card-header {height: 50px;}
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .card-header {height: 60px;}
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .card-header {height: 70px;}
+}
+
 div.card-header::after{
     content: '\002B';
     color: white;
@@ -216,6 +233,7 @@ footer {
     height: 10%;
     width: 100%;
     z-index: 5;
+    height: 55px;
 }
 
 
@@ -493,6 +511,7 @@ background: #6d7fcc;
 
 .message {
     font-size: 1rem;
+    word-wrap: break-word;
 }
 
 .btn-sm {

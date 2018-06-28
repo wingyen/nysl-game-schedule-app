@@ -10,11 +10,13 @@ var app = new Vue({
         teams: [],
         teamSchedule: [],
         selectedTeamName: "",
+        showLoader: true
     },
 
     created: function () {
         this.getSchedule();
         this.teams = this.data.teams;
+        this.showLoader= false;
 
     },
     methods: {

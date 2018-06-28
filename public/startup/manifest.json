@@ -1,0 +1,25 @@
+{
+  "short_name": "NYSL",
+  "name": "NYSL Game Schedule App",
+  "icons": [
+    {
+      "src": "icons/soccer-ball-192.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "icons/soccer-ball-192.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "icons/soccer-ball-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#38538ed9",
+  "theme_color": "#38538ed9"
+ }

@@ -3,23 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>NYSL Web Application</title>
     <meta name="viewport" content="initial-scale=1">
-
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="NYSL Web Application">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="icon" sizes="192x192" href="style/soccer-ball-icon-512.png">
+    <link rel="apple-touch-icon" href="style/soccer-ball-icon-512.png">
+    <!-- link to manifest -->
+    <link rel="manifest" href="startup/manifest.json">
 
-    <title>NYSL Web Application</title>
-    <link rel="apple-touch-icon" href="style/icons8-soccer-ball-48.png">
-    <link rel="icon" sizes="192x192" href="style/icons8-soccer-ball-48.png">
-    <link rel="manifest" href="scripts/manifest.json">
+    <link rel="apple-touch-icon" sizes="76x76" href="style/soccer-ball-icon-512.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="style/soccer-ball-icon-512.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="style/soccer-ball-icon-512.png">
+  
+ 
     <!-- iPhone  startup image -->
     <link rel="apple-touch-startup-image" href="style/apple-touch-startup-image-640x1096.jpeg">
     <!-- iPhone 6/7 startup image -->
-    <!-- <link href="style/blue_startup.png" media="(device-width: 415px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image"> -->
+    <link href="style/blue_startup.png" media="(device-width: 415px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
     <!-- iPhone 6 startup image -->
-    <!-- <link href="style/blue_startup.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"> -->
+    <link href="style/blue_startup.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
     <!-- iPhone 5 startup image -->
     <link href="style/apple-touch-startup-image-640x1096.jpeg" media="(device-width: 320px)
     and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
@@ -96,8 +101,12 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="container-fluid">
+                                <!-- v-if="schedule.length==0" -->
+                            <div id="loader" v-if="schedule.length==0" style="height: 100vh; width: 100%;margin-top: 50px; text-align: center;vertical-align: auto; background-size: 100vh 100vh; z-index:1"  >
+                                <img src="style/Pacman-loading-200px.gif" alt="loader" style="width: 150px; height: 150px;">
+                            </div>
 
-                            <div class="card text-center card-nav-tabs" v-for="x in schedule">
+                            <div class="card text-center card-nav-tabs" v-for="x in schedule" >
                                 <div class="card-header card-header-success collapsible">
                                     {{x.date}}
                                 </div>
@@ -262,7 +271,7 @@
                 </a>
             </div>
             <div class="footer-icons col">
-                
+
                 <a href="#chatModal" onclick="toggleChat()">
                     <img id="chatIcon" src="style/wechat.png" alt="chat icon" style="width: 33px; height: 33px;">
                 </a>
@@ -272,7 +281,7 @@
                     <img id="emailIcon" src="style/mail_icon.png" alt="mailto icon" style="width: 30px; height: 30px;">
                 </a>
             </div>
-            
+
         </footer>
 
     </div>
@@ -293,7 +302,7 @@
             messagingSenderId: "583314587471"
         };
         firebase.initializeApp(config);
-    
+
 
         // FirebaseUI config.
         var uiConfig = {
@@ -301,7 +310,7 @@
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
                 //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
                 //firebase.auth.GithubAuthProvider.PROVIDER_ID,
                 firebase.auth.EmailAuthProvider.PROVIDER_ID,
